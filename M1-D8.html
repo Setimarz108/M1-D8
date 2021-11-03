@@ -9,28 +9,30 @@
   </head>
   <body>
     <div id="header">
-      <h1 id="title" onclick="changeTitle()" onmouseleave="addClassToTitle()">This is the title of the page</h1>
+      <h1 id="title" onclick="changeTitle()" onmouseleaves="addClassToTitle()">This is the title of the page</h1>
       <h2 >This is the subtitle of the page</h2>
     </div>
 
-    <div>
+    <div id="firstDiv" onclick="addParagraph(event)">
       <hr />
 
-      <ul id="firstList">
+    
+
+      <ul id="firstList" onclick="firstUlDisappear()" onmousedown="paintItGreen(event)">
         <li>1st</li>
         <li>2nd</li>
         <li>3rd</li>
       </ul>
 
-      <ul id="secondList">
+      <ul id="secondList" onclick="addToTheSecond()" onmousedown="paintItGreen(event)"">
         <li>1st</li>
         <li>2nd</li>
         <li>3rd</li>
       </ul>
 
-      <a href="strive.school">This link goes to Strive School</a>
+      <a href="strive.school" onmouseover="changeUrls()" id="link">This link goes to Strive School</a>
 
-      <div>
+      <div onclick="changePcontent(event)">
         <p>This text is just for the exercise</p>
       </div>
 
@@ -44,7 +46,7 @@
     </div>
 
     <div>
-      <p>And this text is just for the exercise too!</p>
+      <p onclick="changePcontent(event)">And this text is just for the exercise too!</p>
       <h2 style="color: red">
         Save this page on your computer and open it with VSCode to get the
         questions!
@@ -77,32 +79,45 @@
        Write a function for changing the text of only the p which are children of a div.
       */
 
-      const changePcontent = function () {
+      const changePcontent = function (eventData) {
         //
+
+        let paragraph = document.querySelector('div p')
+        paragraph.innerHTML = "I´ve been changed...lol"
       };
 
       /* EXERCISE 4
-       Write a function for changing the href property of every link to https://www.google.com
+       Write a function for changing the href property of every link to 
       */
 
       const changeUrls = function () {
         //
+           document.getElementById("link").attr("href", "https://www.google.com");
+           
       };
 
       /* EXERCISE 5
        Write a function for adding a new list item in the second unordered list.
       */
 
-      const addToTheSecond = function (content) {
+      const addToTheSecond = function () {
         //
+         let parentNode = document.getElementById('secondList')
+         let newNode = document.createElement('li')
+         parentNode.appendChild(newNode)
       };
 
       /* EXERCISE 6
        Write a function for adding a second paragraph to the first div.
       */
 
-      const addParagraph = function (content) {
-        //
+      const addParagraph = function (eventData) {
+        //  
+             let parentDiv = document.getElementsByClassName("firstDiv")
+             let newP = document.createElement('p')
+     
+             parentDiv.appendChild(newP)
+             newP.innerHTML = 'This is brand new Paragraph...freshly baked out of the oven.'
       };
 
       /* EXERCISE 7
@@ -111,14 +126,19 @@
 
       const firstUlDisappear = function () {
         //
+
+        let firstList = document.getElementById('firstList');
+            firstList.remove()
       };
 
       /* EXERCISE 8
        Write a function for making the background of every unordered list green.
       */
 
-      const paintItGreen = function () {
+      const paintItGreen = function (eventData) {
         //
+           eventData.target.style.backgroundColor = "green";   
+        
       };
 
       /* EXERCISE 9
