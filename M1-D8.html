@@ -8,9 +8,9 @@
     </style>
   </head>
   <body>
-    <div>
-      <h1>This is the title of the page</h1>
-      <h2>This is the subtitle of the page</h2>
+    <div id="header">
+      <h1 id="title" onclick="changeTitle()" onmouseleave="addClassToTitle()">This is the title of the page</h1>
+      <h2 >This is the subtitle of the page</h2>
     </div>
 
     <div>
@@ -55,8 +55,11 @@
        Write a function for changing the title of the document in something else.
       */
 
-      const changeTitle = function (newTitle) {
-        //
+      const changeTitle = function () {
+        //  
+            let newTitle = document.getElementById('title')
+            newTitle.innerText = 'This is a new Title';
+
       };
 
       /* EXERCISE 2
@@ -65,6 +68,9 @@
 
       const addClassToTitle = function () {
         //
+
+           let title = document.getElementById('title')
+               title.classList.add("myHeading")
       };
 
       /* EXERCISE 3
