@@ -9,13 +9,12 @@
   </head>
   <body>
     <div id="header">
-      <h1 id="title" onclick="changeTitle()" onmouseleaves="addClassToTitle()">This is the title of the page</h1>
+      <h1 id="title" onclick="changeTitle()" onmouseover="addClassToTitle()">This is the title of the page</h1>
       <h2 >This is the subtitle of the page</h2>
     </div>
 
-    <div id="firstDiv" onclick="addParagraph(event)">
+    <div onclick="addParagraph(event)">
       <hr />
-
     
 
       <ul id="firstList" onclick="firstUlDisappear()" onmousedown="paintItGreen(event)">
@@ -82,8 +81,8 @@
       const changePcontent = function (eventData) {
         //
 
-        let paragraph = document.querySelector('div p')
-        paragraph.innerHTML = "I´ve been changed...lol"
+        let paragraph = document.querySelectorAll('div p')
+          paragraph.innerText = "I´ve been changed...lol"
       };
 
       /* EXERCISE 4
@@ -92,7 +91,8 @@
 
       const changeUrls = function () {
         //
-           document.getElementById("link").attr("href", "https://www.google.com");
+           document.getElementById("link").href = "https://www.google.com"
+           
            
       };
 
@@ -113,11 +113,11 @@
 
       const addParagraph = function (eventData) {
         //  
-             let parentDiv = document.getElementsByClassName("firstDiv")
+             let parentDiv = document.querySelector("div")[0]
              let newP = document.createElement('p')
-     
+             newP.innerText = eventData
              parentDiv.appendChild(newP)
-             newP.innerHTML = 'This is brand new Paragraph...freshly baked out of the oven.'
+            
       };
 
       /* EXERCISE 7
@@ -169,7 +169,8 @@
       */
 
       window.onload = function () {
-        //
+        // 
+        alert('Welcoome')
       };
 
       /* EXERCISE 13
